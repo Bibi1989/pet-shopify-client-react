@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, Suspense, lazy } from "react";
 import DogProducts from "./SingleComponents/DogProducts";
 import CatProducts from "./SingleComponents/CatProducts";
 import { DogContext } from "../context/dog-context/DogProvider";
@@ -9,7 +9,7 @@ import RabbitProduct from "./SingleComponents/RabbitProduct";
 import RecentProduct from "./SingleComponents/RecentProducts";
 
 const Products = () => {
-  let { pets, dogs, breeds, name, breed, search_pets } = useContext(
+  let { pets, dogs, breeds, name, breed, search_pets, loading } = useContext(
     DogContext
   );
   useEffect(() => {
@@ -18,7 +18,6 @@ const Products = () => {
   // let animals = pets
   pets = search_pets ? pets : search_pets;
   const recentPets = [...pets].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()).slice(0, 5)
-  console.log(recentPets)
   return (
     <>
       {name || breed ? (

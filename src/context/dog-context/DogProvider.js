@@ -34,12 +34,15 @@ export const DogProvider = ({ children }) => {
 
   const [name, setName] = useState("");
   const [breed, setBreed] = useState("");
+  const [loading, setLoading] = useState(false);
 
   // all pets
   const fetchPets = async () => {
+    // setLoading(true)
     try {
       const response = await axios.get(url);
       dispatch({ type: FETCH_PET, payload: response.data.data });
+      // setLoading(false)
     } catch (error) {
       dispatch({ type: ERRORS, payload: error.message });
     }
@@ -173,7 +176,8 @@ export const DogProvider = ({ children }) => {
         breed,
         onSearch,
         search_pets: state.search_pets,
-        deleteCart
+        deleteCart,
+        loading
       }}
     >
       {children}
