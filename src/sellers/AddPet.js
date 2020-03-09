@@ -68,9 +68,9 @@ const AddPet = () => {
         location,
         image_url: file,
         phone,
+        stock
       }
     const token = localStorage.getItem('x-auth')
-    console.log({token, data})
     axios.post(`https://pet-shopify.herokuapp.com/animals`, data, {
         headers: {
           "Content-Type": "application/json",
@@ -266,8 +266,7 @@ const AddPet = () => {
           icon='user'
           placeholder='Upload image...'
         />
-
-        <Button type='submit'>Submit</Button>
+        {file && <Button type='submit'>Submit</Button>}
       </Form>
     </Container>
   );

@@ -6,6 +6,7 @@ import MonkeyProduct from "./SingleComponents/MonkeyProducts";
 import BirdProduct from "./SingleComponents/BirdProducts";
 import { Container, FilteredContainer } from "../StyleComponent";
 import RabbitProduct from "./SingleComponents/RabbitProduct";
+import RecentProduct from "./SingleComponents/RecentProducts";
 
 const Products = () => {
   let { pets, dogs, breeds, name, breed, search_pets } = useContext(
@@ -16,7 +17,8 @@ const Products = () => {
   }, [pets, search_pets])
   // let animals = pets
   pets = search_pets ? pets : search_pets;
-  console.log(search_pets)
+  const recentPets = [...pets].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()).slice(0, 5)
+  console.log(recentPets)
   return (
     <>
       {name || breed ? (
@@ -71,12 +73,19 @@ const Products = () => {
         </>
       ) : (
         <>
-          <div style={line}>
-            <h1
-              style={{ textAlign: "center", fontSize: "3.2rem", color: "#777" }}
-            >
-              Dogs Categories
-            </h1>
+          <div>
+            <h1 style={{padding: "5% 0 1% 0", textAlign: "center"}}>Recent Pets</h1>
+            <Container>
+              {recentPets.map(pet => {
+                return (
+                  pet.name === "dogs" && <RecentProduct key={pet._id} pet={pet} />
+                );
+              })}
+            </Container>
+          </div>
+          
+          <div>
+          <h1 style={{padding: "5% 0 1% 0", textAlign: "center"}}>Pets By Category</h1>
             <Container>
               {pets.map(pet => {
                 return (
@@ -84,14 +93,7 @@ const Products = () => {
                 );
               })}
             </Container>
-          </div>
 
-          <div style={line}>
-            <h1
-              style={{ textAlign: "center", fontSize: "3.2rem", color: "#777" }}
-            >
-              Cats Categories
-            </h1>
             <Container>
               {pets.map(pet => {
                 return (
@@ -99,14 +101,7 @@ const Products = () => {
                 );
               })}
             </Container>
-          </div>
 
-          <div style={line}>
-            <h1
-              style={{ textAlign: "center", fontSize: "3.2rem", color: "#777" }}
-            >
-              Monkeys Categories
-            </h1>
             <Container>
               {pets.map(pet => {
                 return (
@@ -116,14 +111,7 @@ const Products = () => {
                 );
               })}
             </Container>
-          </div>
 
-          <div style={line}>
-            <h1
-              style={{ textAlign: "center", fontSize: "3.2rem", color: "#777" }}
-            >
-              Birds Categories
-            </h1>
             <Container>
               {pets.map(pet => {
                 return (
@@ -133,14 +121,7 @@ const Products = () => {
                 );
               })}
             </Container>
-          </div>
 
-          <div style={line}>
-            <h1
-              style={{ textAlign: "center", fontSize: "3.2rem", color: "#777" }}
-            >
-              Rabbit Categories
-            </h1>
             <Container>
               {pets.map(pet => {
                 return (
