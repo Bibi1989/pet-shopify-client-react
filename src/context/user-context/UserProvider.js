@@ -2,8 +2,6 @@ import React, { createContext, useReducer, useEffect } from "react";
 import axios from "axios";
 import reducer from "./userReducer";
 import { REGISTER_USER, LOGIN_USER, REGISTER_ERROR, LOGIN_ERROR } from "./user-types";
-import { ERRORS } from "../dog-context/types";
-import decode from "jwt-decode";
 
 const initialState = {
   registerUser: [],
@@ -16,9 +14,9 @@ const initialState = {
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const register_url = `http://localhost:3001/users/register`;
-  const login_url = `http://localhost:3001/users/login`;
-  const user_url = `http://localhost:3001/users/profile`;
+  const register_url = `https://pet-shopify.herokuapp.com/users/register`;
+  const login_url = `https://pet-shopify.herokuapp.com/users/login`;
+  const user_url = `https://pet-shopify.herokuapp.com/users/profile`;
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleRegister = async (body, history) => {
@@ -38,7 +36,6 @@ export const UserProvider = ({ children }) => {
       const response = await axios.post(login_url, body);
       localStorage.setItem("x-auth", response.data.token);
       localStorage.setItem("users", JSON.stringify(response.data.data));
-      console.log(response)
       history.push('/')
       dispatch({ type: LOGIN_USER, payload: response.data.data });
     } catch (error) {
