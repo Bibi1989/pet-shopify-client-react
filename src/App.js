@@ -20,7 +20,9 @@ function App() {
           <NavBar />
           <Switch>
             <UserProvider>
-              <Route exact path='/register' component={Register}/>
+              <Route exact path='/register'>
+                <Register />
+              </Route>
               <Route exact path='/login' component={Login}/>
               <Route exact path='/' component={FrontPage}/>
               <Route exact path='/view/:id' component={SinglePet} />
