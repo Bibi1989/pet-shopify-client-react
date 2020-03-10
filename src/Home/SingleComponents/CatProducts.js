@@ -4,14 +4,16 @@ import {PetCardUi} from '../../UiComponets/UiComponents'
 
 const CatProducts = ({ pet }) => {
   const { addToCart, getCart } = useContext(DogContext);
-  const { id } = JSON.parse(localStorage.getItem("users")) || [];
+  // const { id } = JSON.parse(localStorage.getItem("users")) || [];
   const handleCart = (pet) => {
     const pet_body = {
       ...pet,
       quantity: "1"
     }
-    addToCart(pet_body, id);
-    getCart(id);
+    let order = JSON.parse(localStorage.getItem("orders")) || []
+    order.push(pet_body)
+    localStorage.setItem("orders", JSON.stringify(order))
+    getCart();
   };
   return (
     <div>

@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import { Form, Button } from "semantic-ui-react";
 import { UserContext } from "../context/user-context/UserProvider";
 import { useHistory } from "react-router-dom";
-import { LOGIN_ERROR } from "../context/user-context/user-types";
 
 const Login = () => {
   const { handleLogin, login_error } = useContext(UserContext);

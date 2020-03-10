@@ -158,7 +158,6 @@ const FrontPage = () => {
         {/* </div> */}
       </Parent>
       <Products />
-      <Footer />
     </div>
   );
 };

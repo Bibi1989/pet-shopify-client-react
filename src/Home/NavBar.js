@@ -19,7 +19,7 @@ export const NavBar = () => {
   const carts = JSON.parse(localStorage.getItem("orders"));
   const history = useHistory();
   useEffect(() => {
-    // getCart();
+    getCart();
     // eslint-disable-next-line
   }, [history]);
 

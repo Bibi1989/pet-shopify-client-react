@@ -11,6 +11,7 @@ import Register from "./Users/Register";
 import { UserProvider } from "./context/user-context/UserProvider";
 import Login from "./Users/Login";
 import PrivateRoute from "./privateroute/PrivateRoute";
+import Footer from "./Home/Footer";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
               <Route exact path='/seller' component={AddPet}/>
             </UserProvider>
           </Switch>
+          <Footer />
         </DogProvider>
       </Router>
     </div>

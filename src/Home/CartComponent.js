@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Container, Item, Label, Button } from "semantic-ui-react";
 import { DogContext } from "../context/dog-context/DogProvider";
 import {Select} from '../StyleComponent'
@@ -7,30 +7,30 @@ import Footer from "./Footer";
 const array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const CartComponent = () => {
-  const { getCart, deleteCart } = useContext(DogContext);
+  const { getCart, deleteCart, addCart, cart } = useContext(DogContext);
   let carts = JSON.parse(localStorage.getItem("orders"))
+  const [state, setState] = useState(false)
 
   useEffect(() => {
-    // getCart();
+    getCart();
     // eslint-disable-next-line
-  }, [carts]);
+  }, [state]);
 
   const handleRemove = id => {
     deleteCart(id);
-    carts = carts.filter(cart => cart.id != id)
+    carts = carts.filter(cart => cart.id !== id)
+    console.log(carts)
     localStorage.setItem("orders", JSON.stringify(carts))
   };
 
   const handleQuantity = (e, id) => {
-    console.log(id)
     carts = carts.map(cart => {
-      console.log({id, crt: cart.id})
-      if(cart.id === id) {
+      if(cart._id === id) {
         cart.quantity = e.target.value
       }
       return cart
     })
-    console.log(carts)
+    setState(!state)
     localStorage.setItem("orders", JSON.stringify(carts))
   }
 
@@ -72,9 +72,9 @@ const CartComponent = () => {
                     Remove Item
                   </Button>
                 <Item.Description>
-                  <Select onChange={(e) => handleQuantity(e, a.id)}>
+                  <Select onChange={(e) => handleQuantity(e, a._id)}>
                     {array.map(opt => (
-                      <option value={opt}>{opt}</option>
+                      <option key={opt} value={opt}>{opt}</option>
                     ))}
                   </Select>
                 </Item.Description>
@@ -94,7 +94,6 @@ const CartComponent = () => {
         </div>
 
     </Container>
-    <Footer />
     </>
   );
 };

@@ -6,7 +6,8 @@ import {
   TextArea,
   Label,
   Input,
-  Button
+  Button,
+  Modal
 } from "semantic-ui-react";
 import axios from "axios";
 import { cities } from "../state-cities";
@@ -76,7 +77,10 @@ const AddPet = () => {
           "Content-Type": "application/json",
           "x-auth": `${token}`
         }
-      }).then(response => console.log(response)).catch(err => console.log(err));
+      }).then(response => {
+        
+      }).catch(err => console.log(err));
+      // window.location.reload()
   };
 
   return (
@@ -266,7 +270,13 @@ const AddPet = () => {
           icon='user'
           placeholder='Upload image...'
         />
-        {file && <Button type='submit'>Submit</Button>}
+        <Modal
+          style={{width: '350px', height: '200px', position: 'absolute', left: '50%', transform: 'translateX(-50%'}}
+          trigger={file && <Button type='submit'>Submit</Button>}
+          header='Reminder!'
+          content='Call Benjamin regarding the reports.'
+          actions={['Snooze', { key: 'done', content: 'Done', positive: false }]}
+  />
       </Form>
     </Container>
   );

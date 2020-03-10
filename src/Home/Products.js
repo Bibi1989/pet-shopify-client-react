@@ -9,7 +9,7 @@ import RabbitProduct from "./SingleComponents/RabbitProduct";
 import RecentProduct from "./SingleComponents/RecentProducts";
 
 const Products = () => {
-  let { pets, dogs, breeds, name, breed, search_pets, loading } = useContext(
+  let { pets, dogs, breeds, name, breed, search_pets } = useContext(
     DogContext
   );
   useEffect(() => {
@@ -17,7 +17,9 @@ const Products = () => {
   }, [pets, search_pets])
   // let animals = pets
   pets = search_pets ? pets : search_pets;
-  const recentPets = [...pets].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()).slice(0, 5)
+  const recentPets = pets.slice(0, 5)
+  console.log(recentPets)
+  if(pets.length === 0) return (<div style={{textAlign: 'center', padding: '5%'}}><h1>No Pets Available</h1></div>)
   return (
     <>
       {name || breed ? (

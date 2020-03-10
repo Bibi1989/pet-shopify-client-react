@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Menu } from "semantic-ui-react";
+import { Menu, Container } from "semantic-ui-react";
 
 const Footer = () => {
   return (
@@ -16,7 +16,7 @@ export default Footer;
 
 const FooterList = () => {
   return (
-    <div style={{ width: "100%" }}>
+    <Container style={{ width: "100%" }}>
       <Menu inverted vertical style={{ width: "90%" }}>
         <Menu.Item href='//google.com' target='_blank'>
           <h1>Categories</h1>
@@ -28,7 +28,7 @@ const FooterList = () => {
       </Menu>
 
       {/* {message && <Message content={message} />} */}
-    </div>
+    </Container>
   );
 };
 

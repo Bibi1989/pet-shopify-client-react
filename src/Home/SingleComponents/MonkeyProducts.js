@@ -6,7 +6,14 @@ const MonkeyProduct = ({ pet }) => {
   const { addToCart, getCart } = useContext(DogContext);
   const { id } = JSON.parse(localStorage.getItem("users")) || [];
   const handleCart = pet => {
-    addToCart(pet, id);
+    const pet_body = {
+      ...pet,
+      quantity: "1"
+    }
+    let order = JSON.parse(localStorage.getItem("orders")) || []
+    order.push(pet_body)
+    localStorage.setItem("orders", JSON.stringify(order))
+    getCart();
     getCart(id);
   };
   return (
