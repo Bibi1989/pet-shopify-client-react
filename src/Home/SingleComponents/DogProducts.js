@@ -5,7 +5,7 @@ import {PetCardUi} from '../../UiComponets/UiComponents'
 const DogProducts = ({ pet }) => {
   const { addToCart, getCart } = useContext(DogContext);
   const { id } = JSON.parse(localStorage.getItem("users")) || [];
-  const [state, setState] = useState(false)
+  const [state, setState] = React.useState(false)
 
   useEffect(() => {
     getCart()

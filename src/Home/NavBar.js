@@ -6,8 +6,6 @@ import {
   Button,
   Popup,
   Image,
-  Dropdown,
-  Transition
 } from "semantic-ui-react";
 import { DogContext } from "../context/dog-context/DogProvider";
 import { useHistory, Link } from "react-router-dom";

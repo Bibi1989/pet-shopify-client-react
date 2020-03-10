@@ -19,13 +19,12 @@ const CartComponent = () => {
   const handleRemove = id => {
     deleteCart(id);
     carts = carts.filter(cart => cart.id !== id)
-    console.log(carts)
     localStorage.setItem("orders", JSON.stringify(carts))
   };
 
   const handleQuantity = (e, id) => {
     carts = carts.map(cart => {
-      if(cart._id === id) {
+      if(cart.id === id) {
         cart.quantity = e.target.value
       }
       return cart
@@ -34,7 +33,7 @@ const CartComponent = () => {
     localStorage.setItem("orders", JSON.stringify(carts))
   }
 
-  const total_price = carts.reduce((a, v) => a += (parseInt(v.price) * parseInt(v.quantity)), 0)
+  const total_price = carts === null ? 0 : carts.reduce((a, v) => a += (parseInt(v.price) * parseInt(v.quantity)), 0)
 
   return (
     <>
@@ -72,7 +71,7 @@ const CartComponent = () => {
                     Remove Item
                   </Button>
                 <Item.Description>
-                  <Select onChange={(e) => handleQuantity(e, a._id)}>
+                  <Select onChange={(e) => handleQuantity(e, a.id)}>
                     {array.map(opt => (
                       <option key={opt} value={opt}>{opt}</option>
                     ))}

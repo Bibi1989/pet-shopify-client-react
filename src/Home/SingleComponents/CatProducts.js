@@ -1,20 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { DogContext } from "../../context/dog-context/DogProvider";
 import {PetCardUi} from '../../UiComponets/UiComponents'
 
 const CatProducts = ({ pet }) => {
   const { addToCart, getCart } = useContext(DogContext);
-  // const { id } = JSON.parse(localStorage.getItem("users")) || [];
-  const handleCart = (pet) => {
+  const { id } = JSON.parse(localStorage.getItem("users")) || [];
+
+  const [state, setState] = React.useState(false)
+
+  useEffect(() => {
+    getCart()
+  }, [state])
+
+  const handleCart = pet => {
     const pet_body = {
       ...pet,
       quantity: "1"
     }
-    let order = JSON.parse(localStorage.getItem("orders")) || []
-    order.push(pet_body)
-    localStorage.setItem("orders", JSON.stringify(order))
-    getCart();
+    setState(!state)
+    addToCart(pet_body, id);
   };
+
   return (
     <div>
       <PetCardUi pet={pet} handleCart={handleCart} />
