@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { DogContext } from "../../context/dog-context/DogProvider";
 import {PetCardUi} from '../../UiComponets/UiComponents'
 
@@ -9,7 +9,8 @@ const DogProducts = ({ pet }) => {
 
   useEffect(() => {
     getCart()
-    console.log(loading)
+    
+    // eslint-disable-next-line
   }, [state, loading])
   const handleCart = pet => {
     const pet_body = {

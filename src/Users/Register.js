@@ -9,7 +9,6 @@ const Register = () => {
   const history = useHistory();
   const [bool, setBool] = useState("");
   const [error, setError] = useState("");
-  const [emailVal, setEmailVal] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [values, setValues] = useState({
     name: "",
@@ -38,7 +37,7 @@ const Register = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    if(confirmPassword !== values.password) {
+    if (confirmPassword !== values.password) {
       return setError("Password do not match")
     }
     handleRegister(data, history);
@@ -68,7 +67,7 @@ const Register = () => {
           <Form.Input
             type='email'
             fluid
-  label={register_error.email ? (<p className="error">{register_error.email}</p>) : (<p>Email Address...</p>)}
+            label={register_error.email ? (<p className="error">{register_error.email}</p>) : (<p>Email Address...</p>)}
             name='email'
             onChange={handleInput}
             placeholder='Email Address'
@@ -79,14 +78,13 @@ const Register = () => {
             name='password'
             onChange={handleInput}
             placeholder='Password'
-            />
+          />
         </Form.Group>
-            <Label><p className="error">{typeof register_error === 'string' ? register_error : ""}</p></Label>
+        <Label><p className="error">{typeof register_error === 'string' ? register_error : ""}</p></Label>
         <Form.Input
           fluid
-  label={error ? (<p className="error">{error}</p>) : (<p>Confirm Password...</p>)}
+          label={error ? (<p className="error">{error}</p>) : (<p>Confirm Password...</p>)}
           name='confirmPassword'
-          onChange={handleInput}
           placeholder='Confirm Password'
           onChange={e => setConfirmPassword(e.target.value)}
         />

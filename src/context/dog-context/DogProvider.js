@@ -35,16 +35,34 @@ export const DogProvider = ({ children }) => {
   const [name, setName] = useState("");
   const [breed, setBreed] = useState("");
   const [loading, setLoading] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   // all pets
-  const fetchPets = async () => {
-    try {
-      const response = await axios.get(url);
-      dispatch({ type: FETCH_PET, payload: response.data.data });
-    } catch (error) {
-      dispatch({ type: ERRORS, payload: error.message });
+  // const fetchPets = async () => {
+  //   try {
+  //     const response = await axios.get(url);
+
+  //     dispatch({ type: FETCH_PET, payload: response.data.data });
+  //   } catch (error) {
+  //     dispatch({ type: ERRORS, payload: error.message });
+  //   }
+  // };
+
+  useEffect(() => {
+    setLoader(true)
+    const callBack = async () => {
+      try {
+        const response = await axios.get(url);
+        dispatch({ type: FETCH_PET, payload: response.data.data });
+      } catch (error) {
+        dispatch({ type: ERRORS, payload: error.message });
+      }
     }
-  };
+    callBack()
+    setLoader(false)
+
+    // eslint-disable-next-line
+  }, [])
 
   const fetchSinglePet = async id => {
     try {
@@ -115,7 +133,6 @@ export const DogProvider = ({ children }) => {
 
   const getCart = async () => {
     try {
-      // id = id !== undefined ? id : "";
       const token = localStorage.getItem("x-auth");
       const response = await axios.get(`https://pet-shopify.herokuapp.com/orders`, {
         headers: {
@@ -124,7 +141,6 @@ export const DogProvider = ({ children }) => {
       });
       const user = decode(token);
       let { data } = response.data;
-      console.log("GetCart", response.data)
       dispatch({
         type: GET_CART,
         payload: data.filter(res => res.user_id === user.id)
@@ -137,7 +153,6 @@ export const DogProvider = ({ children }) => {
   const deleteCart = async id => {
     setLoading(!loading)
     try {
-      // const token = localStorage.getItem("x-auth");
       await axios.delete(`https://pet-shopify.herokuapp.com/orders/${id}`, {
         headers: {
           "content-type": "application/json"
@@ -153,10 +168,9 @@ export const DogProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    fetchPets();
     getCart();
     // eslint-disable-next-line
-  }, [url]);
+  }, []);
 
   return (
     <DogContext.Provider
@@ -176,7 +190,8 @@ export const DogProvider = ({ children }) => {
         onSearch,
         search_pets: state.search_pets,
         deleteCart,
-        loading
+        loading, 
+        loader
       }}
     >
       {children}

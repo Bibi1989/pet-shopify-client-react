@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import {
   Input,
   Menu,
@@ -138,13 +138,13 @@ const sticky = {
   zIndex: "10"
 };
 
-const account = {
-  width: "40px",
-  height: "40px",
-  borderRadius: "50%",
-  fontSize: "1.5rem",
-  border: "1px solid #999",
-  textAlign: "center",
-  paddingTop: "5px",
-  marginTop: "1vh"
-};
+// const account = {
+//   width: "40px",
+//   height: "40px",
+//   borderRadius: "50%",
+//   fontSize: "1.5rem",
+//   border: "1px solid #999",
+//   textAlign: "center",
+//   paddingTop: "5px",
+//   marginTop: "1vh"
+// };

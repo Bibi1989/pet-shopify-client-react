@@ -8,6 +8,8 @@ const RecentProduct = ({ pet }) => {
 
   React.useEffect(() => {
     getCart()
+
+    // eslint-disable-next-line
   }, [loading])
   
   const handleCart = pet => {

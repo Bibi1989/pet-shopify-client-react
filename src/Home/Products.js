@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, Suspense, lazy } from "react";
+import React, { useContext } from "react";
 import DogProducts from "./SingleComponents/DogProducts";
 import CatProducts from "./SingleComponents/CatProducts";
 import { DogContext } from "../context/dog-context/DogProvider";
@@ -12,14 +12,11 @@ const Products = () => {
   let { pets, dogs, breeds, name, breed, search_pets } = useContext(
     DogContext
   );
-  useEffect(() => {
-    pets = pets
-  }, [pets, search_pets])
+
   // let animals = pets
   pets = search_pets ? pets : search_pets;
-  const recentPets = pets.slice(0, 5)
-  console.log(recentPets)
-  if(pets.length === 0) return (<div style={{textAlign: 'center', padding: '5%'}}><h1>No Pets Available</h1></div>)
+  const recentPets = [...pets].slice(0, 5)
+  if(pets.length === 0) return (<div style={{textAlign: 'center', padding: '5%'}}><img src={"./image/loader.gif"} alt="loader" /></div>)
   return (
     <>
       {name || breed ? (

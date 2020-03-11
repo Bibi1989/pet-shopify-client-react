@@ -11,6 +11,7 @@ const MonkeyProduct = ({ pet }) => {
   useEffect(() => {
     getCart()
 
+    // eslint-disable-next-line
   }, [state, loading])
   
   const handleCart = pet => {

@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useEffect } from "react";
+import React, { createContext, useReducer } from "react";
 import axios from "axios";
 import reducer from "./userReducer";
 import { REGISTER_USER, LOGIN_USER, REGISTER_ERROR, LOGIN_ERROR } from "./user-types";

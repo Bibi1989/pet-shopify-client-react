@@ -3,7 +3,6 @@ import { Button, Menu, Dropdown } from "semantic-ui-react";
 import { Slider } from "infinite-react-carousel";
 import styled from "styled-components";
 import Products from "../Home/Products";
-import Footer from "../Home/Footer";
 import dog1 from "../images/shepherd1.jpg";
 import dog2 from "../images/dog2.jpg";
 import cat2 from "../images/cat2.jpg";
