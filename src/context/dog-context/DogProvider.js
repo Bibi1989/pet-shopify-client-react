@@ -34,7 +34,7 @@ export const DogProvider = ({ children }) => {
 
   const [name, setName] = useState("");
   const [breed, setBreed] = useState("");
-  // const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   // all pets
   const fetchPets = async () => {
@@ -75,6 +75,7 @@ export const DogProvider = ({ children }) => {
   };
 
   const addToCart = async (body) => {
+    setLoading(!loading)
     try {
       const data = {
         id: body._id,
@@ -134,7 +135,7 @@ export const DogProvider = ({ children }) => {
   };
 
   const deleteCart = async id => {
-    console.log(id)
+    setLoading(!loading)
     try {
       // const token = localStorage.getItem("x-auth");
       await axios.delete(`https://pet-shopify.herokuapp.com/orders/${id}`, {
@@ -175,6 +176,7 @@ export const DogProvider = ({ children }) => {
         onSearch,
         search_pets: state.search_pets,
         deleteCart,
+        loading
       }}
     >
       {children}

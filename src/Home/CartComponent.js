@@ -2,19 +2,18 @@ import React, { useContext, useEffect, useState } from "react";
 import { Container, Item, Label, Button } from "semantic-ui-react";
 import { DogContext } from "../context/dog-context/DogProvider";
 import {Select} from '../StyleComponent'
-import Footer from "./Footer";
 
 const array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const CartComponent = () => {
-  const { getCart, deleteCart, addCart, cart } = useContext(DogContext);
+  const { getCart, deleteCart, loading } = useContext(DogContext);
   let carts = JSON.parse(localStorage.getItem("orders"))
   const [state, setState] = useState(false)
 
   useEffect(() => {
     getCart();
     // eslint-disable-next-line
-  }, [state]);
+  }, [state, loading]);
 
   const handleRemove = id => {
     deleteCart(id);
