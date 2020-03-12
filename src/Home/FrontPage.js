@@ -26,7 +26,7 @@ const FrontPage = () => {
   };
   return (
     <div>
-      <h3 style={{paddingLeft: '10%', color: 'teal', paddingBottom: '1rem'}}>Welcome {users ? users.name : null}</h3>
+      <h3 style={{paddingLeft: '10%', color: 'teal', paddingBottom: '1rem',  paddingTop: '1rem'}}>Welcome {users ? users.name : null}</h3>
       <Parent>
         <div className='child-one'>
           <Menu vertical style={{ width: "90%" }}>
@@ -166,6 +166,15 @@ const Parent = styled.div`
   grid-template-columns: 20% 80%;
   padding: 0 10%;
   height: 70vh;
+
+  @media(max-width: 700px) {
+    grid-template-columns: 1fr;
+    padding: 0 2%;
+    height: 120vh;
+    
+    
+  }
+
   .child-one {
     ul {
       list-style: none;

@@ -22,7 +22,8 @@ const initialState = {
   dogs: [],
   breeds: [],
   search_pets: [],
-  delete_msg: ""
+  delete_msg: "",
+  value: ""
 };
 const arrayOfOrders = JSON.parse(localStorage.getItem("orders")) || [];
 
@@ -89,7 +90,7 @@ export const DogProvider = ({ children }) => {
     const filtered = state.animals.filter(
       animal => animal.breed.toLowerCase().includes(value.toLowerCase()) > 0
     );
-    dispatch({ type: SEARCH, payload: filtered });
+    dispatch({ type: SEARCH, payload: filtered, value });
   };
 
   const addToCart = async (body) => {
@@ -191,7 +192,8 @@ export const DogProvider = ({ children }) => {
         search_pets: state.search_pets,
         deleteCart,
         loading, 
-        loader
+        loader,
+        value: state.value
       }}
     >
       {children}

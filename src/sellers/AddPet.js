@@ -7,7 +7,6 @@ import {
   Label,
   Input,
   Button,
-  Modal
 } from "semantic-ui-react";
 import axios from "axios";
 import { cities } from "../state-cities";
@@ -40,7 +39,6 @@ const AddPet = () => {
   //   let validateName = splittedName[1];
   //   return validateName;
   // }
-  console.log(file)
   
   const handlePets = ({ target: { value } }) => setPet(value);
   const handleTypes = ({ target: { value } }) => setBreed(value);
@@ -229,7 +227,7 @@ const AddPet = () => {
         <Input
           name='Stocks'
           onChange={handleStock}
-          icon='pet'
+          icon=''
           iconPosition='left'
           placeholder='Stock Availability...'
         />
@@ -270,13 +268,14 @@ const AddPet = () => {
           icon='user'
           placeholder='Upload image...'
         />
-        <Modal
+        {file && <Button type='submit' primary style={{marginLeft: "30px"}}>Submit {file && <i className="fas fa-cog fa-spin"></i>}</Button>}
+        {/* <Modal
           style={{width: '350px', height: '200px', position: 'absolute', left: '50%', transform: 'translateX(-50%'}}
-          trigger={file && <Button type='submit'>Submit</Button>}
+          trigger={}
           header='Reminder!'
           content='Call Benjamin regarding the reports.'
           actions={['Snooze', { key: 'done', content: 'Done', positive: false }]}
-  />
+  /> */}
       </Form>
     </Container>
   );

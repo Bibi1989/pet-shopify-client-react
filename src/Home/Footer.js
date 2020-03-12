@@ -33,7 +33,7 @@ const FooterList = () => {
 };
 
 const Foot = styled.div`
-padding: 2% 10%;
+  padding: 2% 10%;
   background: #1B1C1D;
   display: grid;
   grid-template-columns: repeat(4, 1fr);

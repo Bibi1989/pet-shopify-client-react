@@ -45,7 +45,8 @@ const reducer = (state, action) => {
     case SEARCH:
       return {
         ...state,
-        search_pets: action.payload
+        search_pets: action.payload, 
+        value: action.value
       };
     case DELETE_CART:
       return {

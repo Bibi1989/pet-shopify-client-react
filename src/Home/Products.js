@@ -7,16 +7,19 @@ import BirdProduct from "./SingleComponents/BirdProducts";
 import { Container, FilteredContainer } from "../StyleComponent";
 import RabbitProduct from "./SingleComponents/RabbitProduct";
 import RecentProduct from "./SingleComponents/RecentProducts";
+import Loader from '../UiComponets/Loader'
 
 const Products = () => {
-  let { pets, dogs, breeds, name, breed, search_pets } = useContext(
+  let { pets, dogs, breeds, name, breed, search_pets, value } = useContext(
     DogContext
   );
 
   // let animals = pets
-  pets = search_pets ? pets : search_pets;
+  pets = search_pets.length > 0 ? search_pets : pets;
+  let search = search_pets
+  console.log(search)
   const recentPets = [...pets].slice(0, 5)
-  if(pets.length === 0) return (<div style={{textAlign: 'center', padding: '5%'}}><img src={"./image/loader.gif"} alt="loader" /></div>)
+  if(pets.length === 0) return (<div style={{padding: "10%", textAlign: "center"}}><Loader /></div>)
   return (
     <>
       {name || breed ? (
@@ -71,7 +74,7 @@ const Products = () => {
         </>
       ) : (
         <>
-          <div>
+          {!value && <div>
             <h1 style={{padding: "5% 0 1% 0", textAlign: "center"}}>Recent Pets</h1>
             <Container>
               {recentPets.map(pet => {
@@ -80,10 +83,10 @@ const Products = () => {
                 );
               })}
             </Container>
-          </div>
+          </div>}
           
           <div>
-          <h1 style={{padding: "5% 0 1% 0", textAlign: "center"}}>Pets By Category</h1>
+            <h1 style={{padding: "5% 0 1% 0", textAlign: "center"}}>{value ? "Search Pets" : "Pets By Category"}</h1>
             <Container>
               {pets.map(pet => {
                 return (

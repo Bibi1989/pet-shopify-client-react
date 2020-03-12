@@ -11,6 +11,7 @@ import Register from "./Users/Register";
 import { UserProvider } from "./context/user-context/UserProvider";
 import Login from "./Users/Login";
 import Footer from "./Home/Footer";
+import Loader from "./UiComponets/Loader";
 
 const FrontPage = lazy(() => import("./Home/FrontPage"))
 
@@ -20,6 +21,7 @@ function App() {
       <Router>
         <DogProvider>
           <NavBar />
+          <div className="first-section">
           <Switch>
             <UserProvider>
               <Route exact path='/register'>
@@ -27,7 +29,7 @@ function App() {
               </Route>
               <Route exact path='/login' component={Login}/>
               <Route exact path='/' >
-                <Suspense fallback={<div style={{textAlign: 'center', padding: '5%'}}><img src={"./image/loader.gif"} alt="loader" /></div>}>
+                <Suspense fallback={<div style={{padding: '20% 0'}}><Loader /></div>}>
                   <FrontPage />
                 </Suspense>
               </Route>
@@ -36,6 +38,7 @@ function App() {
               <Route exact path='/seller' component={AddPet}/>
             </UserProvider>
           </Switch>
+          </div>
           <Footer />
         </DogProvider>
       </Router>
