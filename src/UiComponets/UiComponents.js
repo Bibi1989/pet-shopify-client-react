@@ -43,7 +43,7 @@ export const PetCardUi = ({ pet, handleCart }) => (
         </Link>
       </div>
     </Image>
-    <Card.Content style={{ height: '80px', overflowY: 'auto', padding: '5px 10px'}}>
+    <Card.Content style={{ height: '100px', overflowY: 'auto', padding: '5px 10px'}}>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <Card.Header style={{ color: "teal" }}>
           {pet.name.toUpperCase()}
