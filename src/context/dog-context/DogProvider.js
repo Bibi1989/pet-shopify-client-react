@@ -23,7 +23,8 @@ const initialState = {
   breeds: [],
   search_pets: [],
   delete_msg: "",
-  value: ""
+  value: "",
+  anim: false
 };
 const arrayOfOrders = JSON.parse(localStorage.getItem("orders")) || [];
 
@@ -193,7 +194,8 @@ export const DogProvider = ({ children }) => {
         deleteCart,
         loading, 
         loader,
-        value: state.value
+        value: state.value,
+        anim: state.anim
       }}
     >
       {children}

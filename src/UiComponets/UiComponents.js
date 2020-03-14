@@ -34,16 +34,16 @@ export const ButtonComponent = () => (
 );
 
 export const PetCardUi = ({ pet, handleCart }) => (
-  <Card style={{ width: "300px" }}>
-    <Image style={{ width: "100%", height: "200px", position: "relative" }}>
+  <Card style={{ width: "250px" }}>
+    <Image style={{ width: "100%", height: "150px", position: "relative" }}>
       <img src={pet.image_url} alt='cat2' width='100%' height='100%' />
       <div className='overlay'>
         <Link className='link' to={`/view/${pet._id}`}>
-          <span>View Pet</span>
+          <span onClick={() => window.scrollTo(0, 0)}>View Pet</span>
         </Link>
       </div>
     </Image>
-    <Card.Content style={{ height: '100px', overflowY: 'auto'}}>
+    <Card.Content style={{ height: '80px', overflowY: 'auto', padding: '5px 10px'}}>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <Card.Header style={{ color: "teal" }}>
           {pet.name.toUpperCase()}
@@ -51,9 +51,9 @@ export const PetCardUi = ({ pet, handleCart }) => (
         <p>{moment(pet.createdAt).fromNow(true)}</p>
       </div>
       <Card.Meta>{pet.breed}</Card.Meta>
-      <Card.Description>{pet.description}</Card.Description>
+      <Card.Description>{pet.description.slice(0, 20)}</Card.Description>
     </Card.Content>
-    <Card.Content extra>
+    <Card.Content style={{padding: '5px 10px'}}>
       <Price>
         <div
           style={{

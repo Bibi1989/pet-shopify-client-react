@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import {
   Input,
   Menu,
@@ -20,6 +20,13 @@ export const NavBar = () => {
   const carts = JSON.parse(localStorage.getItem("orders"));
   const history = useHistory();
   const [toggle, setToggle] = React.useState(false)
+  const [state, setstate] = React.useState(false)
+
+  // const bar1 = useRef()
+  // const bar2 = useRef()
+  // const bar3 = useRef()
+
+  
   useEffect(() => {
     getCart();
     // eslint-disable-next-line
@@ -37,6 +44,7 @@ export const NavBar = () => {
   };
 
   const handleToggle = () => {
+    setstate(true)
     setToggle(!toggle)
   }
 
@@ -55,7 +63,9 @@ export const NavBar = () => {
           </Link>
           <BurgerMenu handleToggle={handleToggle} />
         </div>
+        
         <Menu.Menu position='right' className="nav">
+          {/* <CSSTransition> */}
           <Menu.Item>
             <Popup
               trigger={
@@ -130,9 +140,10 @@ export const NavBar = () => {
                 </Button>
               </>
             )}
+          {/* </CSSTransition> */}
         </Menu.Menu>
       </Menu>
-      {toggle && <DropDownMenu token={token} user={user} handleSearch={handleSearch} handleLogout={handleLogout} carts={carts} />}
+      {toggle && <DropDownMenu token={token} user={user} handleSearch={handleSearch} handleLogout={handleLogout} carts={carts} state={state} />}
     </div>
   );
 };

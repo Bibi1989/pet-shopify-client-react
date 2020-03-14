@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import {Link} from 'react-router-dom'
 import DogProducts from "./SingleComponents/DogProducts";
 import CatProducts from "./SingleComponents/CatProducts";
 import { DogContext } from "../context/dog-context/DogProvider";
@@ -8,17 +9,16 @@ import { Container, FilteredContainer } from "../StyleComponent";
 import RabbitProduct from "./SingleComponents/RabbitProduct";
 import RecentProduct from "./SingleComponents/RecentProducts";
 import Loader from '../UiComponets/Loader'
+import styled from "styled-components";
 
 const Products = () => {
   let { pets, dogs, breeds, name, breed, search_pets, value } = useContext(
     DogContext
   );
+  const recentPets = [...pets].slice(0, 5)
 
   // let animals = pets
   pets = search_pets.length > 0 ? search_pets : pets;
-  let search = search_pets
-  console.log(search)
-  const recentPets = [...pets].slice(0, 5)
   if(pets.length === 0) return (<div style={{padding: "10%", textAlign: "center"}}><Loader /></div>)
   return (
     <>
@@ -79,7 +79,7 @@ const Products = () => {
             <Container>
               {recentPets.map(pet => {
                 return (
-                  pet.name === "dogs" && <RecentProduct key={pet._id} pet={pet} />
+                 <RecentProduct key={pet._id} pet={pet} />
                 );
               })}
             </Container>
@@ -87,6 +87,7 @@ const Products = () => {
           
           <div>
             <h1 style={{padding: "5% 0 1% 0", textAlign: "center"}}>{value ? "Search Pets" : "Pets By Category"}</h1>
+            <>
             <Container>
               {pets.map(pet => {
                 return (
@@ -94,7 +95,10 @@ const Products = () => {
                 );
               })}
             </Container>
+            <CustomLink><Link className="links" to={`/category/dogs`}><span>All Dogs</span></Link></CustomLink>
+            </>
 
+            <>
             <Container>
               {pets.map(pet => {
                 return (
@@ -102,7 +106,10 @@ const Products = () => {
                 );
               })}
             </Container>
+            <CustomLink><Link className="links" to={`/category/cats`}><span>All Cats</span></Link></CustomLink>
+            </>
 
+            <> 
             <Container>
               {pets.map(pet => {
                 return (
@@ -112,7 +119,10 @@ const Products = () => {
                 );
               })}
             </Container>
+            <CustomLink><Link className="links" to={`/category/monkeys`}><span>All Monkeys</span></Link></CustomLink>
+            </>
 
+            <>
             <Container>
               {pets.map(pet => {
                 return (
@@ -122,7 +132,10 @@ const Products = () => {
                 );
               })}
             </Container>
+            <CustomLink><Link className="links" to={`/category/birds`}><span>All Birds</span></Link></CustomLink>
+            </>
 
+            <>
             <Container>
               {pets.map(pet => {
                 return (
@@ -132,6 +145,8 @@ const Products = () => {
                 );
               })}
             </Container>
+            <CustomLink><Link className="links" to={`/category/rabbits`}><span>All Rabbits</span></Link></CustomLink>
+            </>
           </div>
         </>
       )}
@@ -143,5 +158,19 @@ const line = {
   borderTop: "1px solid #999",
   padding: "2% 0"
 };
+
+const CustomLink = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+
+  .links{
+    text-decoration: none;
+    color: #555;
+    border: 1px solid #555;
+    padding: 10px 30px;
+    border-radius: 5px;
+  }
+`
 
 export default Products;

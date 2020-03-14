@@ -44,7 +44,7 @@ const Register = () => {
   };
 
   return (
-    <div>
+    <div className="page">
       <h1 style={{ textAlign: "center", paddingTop: "5%" }}>Register</h1>
       <Form onSubmit={onSubmit} style={{ padding: "5% 10%" }}>
         <Form.Group widths='equal'>

@@ -7,11 +7,19 @@ import {
     Popup,
     Image,
 } from "semantic-ui-react";
+import {CSSTransition} from 'react-transition-group'
+import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-const DropDownMenu = ({ token, carts, user, handleLogout, handleSearch }) => {
+const DropDownMenu = ({ token, carts, user, handleLogout, handleSearch, state }) => {
     return (
-        <div>
+        <Div>
+            <CSSTransition
+                in={true}
+                appear={true}
+                timeout={1000}
+                classNames="fade"
+            >
             <Menu.Menu position='right' className="show-nav">
                 <Menu.Item>
                     <Popup
@@ -85,11 +93,37 @@ const DropDownMenu = ({ token, carts, user, handleLogout, handleSearch }) => {
                                     <span style={{ padding: "0 5px" }}>Register</span>
                                 </Link>
                             </Button>
+                            <Link to={`/cart`}>
+                                <Button icon style={{ margin: "20px 0" }}>
+                                    <Icon name='cart' size='big' color='teal' />{" "}
+                                    <sup style={{ fontSize: "1rem", color: "orangered" }}>
+                                        {carts === null ? 0 : carts.length}
+                                    </sup>
+                                </Button>
+                            </Link>
                         </>
                     )}
             </Menu.Menu>
-        </div>
+            </CSSTransition>
+        </Div>
     )
 }
+
+const Div = styled.div`
+    .fade-appear{
+        opacity: 0;
+    }
+    .fade-appear.fade-appear-active{
+        opacity: 1;
+        transition: opacity 600ms linear;
+    }
+    .fade-enter{
+        opacity: 0;
+    }
+    .fade-enter.fade-enter-active{
+        opacity: 1;
+        transition: opacity 600ms linear;
+    }
+`
 
 export default DropDownMenu

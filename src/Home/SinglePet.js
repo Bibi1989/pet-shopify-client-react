@@ -6,7 +6,8 @@ import { RatingExampleStar } from "../UiComponets/UiComponents";
 import { SingleParent, Select } from "../StyleComponent";
 import Products from "./Products";
 import FilteredComponent from "./SingleComponents/FilteredComponent";
-import Footer from "./Footer";
+import '../App.css'
+import Loader from "../UiComponets/Loader";
 
 const array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -17,10 +18,10 @@ const SinglePet = () => {
     addToCart,
     getCart,
     dogs,
-    handlePets
+    handlePets,
   } = useContext(DogContext);
   const [quan, setQuan] = useState("")
-  const handleSelect = ({target: {value}}) => {
+  const handleSelect = ({ target: { value } }) => {
     setQuan(value)
   }
   const handleCart = pet => {
@@ -34,10 +35,12 @@ const SinglePet = () => {
   const { id } = useParams();
   useEffect(() => {
     get_single_pet(id);
-    // eslint-disable-next-line
-  }, [dogs]);
 
-  console.log(view_pet)
+    // eslint-disable-next-line
+  }, [id]);
+
+  if(view_pet.length === 0) return (<div style={{padding: "10%", textAlign: "center"}}><Loader /></div>)
+
   return (
     <>
       <SingleParent>
@@ -88,6 +91,7 @@ const SinglePet = () => {
             </div>
           </div>
         </div>
+
         <div className='second'>
           <Menu vertical style={{ width: "90%" }}>
             <Menu.Item style={{ cursor: "pointer" }}>
@@ -118,8 +122,6 @@ const SinglePet = () => {
         </div>
       </SingleParent>
       {!dogs ? <FilteredComponent dogs={dogs} /> : <Products />}
-
-      <Footer />
     </>
   );
 };

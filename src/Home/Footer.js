@@ -37,4 +37,14 @@ const Foot = styled.div`
   background: #1B1C1D;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  
+  @media(max-width: 1100px) {
+    padding: 2% 5%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media(max-width: 786px) {
+    padding: 2%;
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;

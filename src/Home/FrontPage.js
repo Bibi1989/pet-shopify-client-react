@@ -25,8 +25,8 @@ const FrontPage = () => {
     // autoplaySpeed: 3000
   };
   return (
-    <div>
-      <h3 style={{paddingLeft: '10%', color: 'teal', paddingBottom: '1rem',  paddingTop: '1rem'}}>Welcome {users ? users.name : null}</h3>
+    <div className="page">
+      <h3 style={{paddingLeft: '10%', color: 'teal', paddingBottom: '1rem',  paddingTop: '1rem'}}>{users ? `Welcome ${users.name}` : null}</h3>
       <Parent>
         <div className='child-one'>
           <Menu vertical style={{ width: "90%" }}>
@@ -167,12 +167,22 @@ const Parent = styled.div`
   padding: 0 10%;
   height: 70vh;
 
-  @media(max-width: 700px) {
+  @media(max-width: 1200px) {
+    grid-template-columns: 1fr 2fr;
+    padding: 0 2%;
+    height: 70vh;
+  }
+
+  @media(max-width: 900px) {
     grid-template-columns: 1fr;
     padding: 0 2%;
     height: 120vh;
-    
-    
+  }
+
+  @media(max-width: 768px) {
+    grid-template-columns: 1fr;
+    padding: 0 2%;
+    height: 120vh;
   }
 
   .child-one {

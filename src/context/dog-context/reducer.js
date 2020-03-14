@@ -28,6 +28,7 @@ const reducer = (state, action) => {
         view_pet: action.payload
       };
     case ADD_DOG:
+      state.anim = true
       return {
         ...state,
         add_cart: [action.payload, ...state.cart]

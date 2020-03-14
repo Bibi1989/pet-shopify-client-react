@@ -22,9 +22,9 @@ const Login = () => {
     handleLogin(values, history);
   };
   return (
-    <div>
+    <div className="page">
       <h1 style={{ textAlign: "center", paddingTop: "5%" }}>Login</h1>
-      <Form onSubmit={onSubmit} style={{ padding: "5% 30%" }}>
+      <Form onSubmit={onSubmit} style={{ padding: "7.1% 30%" }}>
         <Form.Field>
           <input
             type='email'

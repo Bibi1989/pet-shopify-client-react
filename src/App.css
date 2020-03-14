@@ -4,6 +4,14 @@
   position: relative;
 }
 
+.fade-appear{
+  opacity: 0;
+}
+
+.fade-appear.fade-appear-active{
+  opacity: 1;
+}
+
 
 @media(max-width: 1100px) {
   .navbar{

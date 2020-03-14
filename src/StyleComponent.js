@@ -10,21 +10,13 @@ export const Select = styled.select`
 
 export const Image = styled.div`
   position: relative;
-  .overlay {
+
+  .overlay{
     display: none;
-    .link {
-      text-decoration: none;
-      color: #eee;
-      width: 100%;
-      span {
-        border: 1px solid #eee;
-        padding: 1% 2%;
-        cursor: pointer;
-      }
-    }
   }
+
   &:hover .overlay {
-    display: inline-block;
+    transition: all 0.5s linear;
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
@@ -36,6 +28,17 @@ export const Image = styled.div`
     right: 0;
     background: #3333339f;
     color: white;
+
+    .link {
+      text-decoration: none;
+      color: #eee;
+      width: 100%;
+      span {
+        border: 1px solid #eee;
+        padding: 1% 2%;
+        cursor: pointer;
+      }
+    }
   }
 `;
 
@@ -91,6 +94,16 @@ export const SingleParent = styled.div`
   grid-gap: 2%;
   padding: 1% 10%;
   height: 70vh;
+
+  .fade-appear{
+    opacity: 0;
+  }
+
+  .fade-appear.fade-appear-active{
+    opacity: 1;
+    transition: opacity 1s lineear;
+  }
+
   .first {
     display: grid;
     grid-template-columns: 50% 50%;
