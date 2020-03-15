@@ -42,7 +42,7 @@ const CartComponent = () => {
   const total_price = carts === null ? 0 : carts.reduce((a, v) => a += (parseInt(v.price) * parseInt(v.quantity)), 0)
 
   return (
-    <div style={{minHeight: '90vh'}}>
+    <div style={{minHeight: '70vh'}}>
     <animated.div style={props}>
       <Container>
         <h1>Your Cart</h1>
