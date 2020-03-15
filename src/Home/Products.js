@@ -1,4 +1,6 @@
 import React, { useContext } from "react";
+import {useSpring, animated} from 'react-spring'
+import styled from "styled-components";
 import {Link} from 'react-router-dom'
 import DogProducts from "./SingleComponents/DogProducts";
 import CatProducts from "./SingleComponents/CatProducts";
@@ -9,19 +11,21 @@ import { Container, FilteredContainer } from "../StyleComponent";
 import RabbitProduct from "./SingleComponents/RabbitProduct";
 import RecentProduct from "./SingleComponents/RecentProducts";
 import Loader from '../UiComponets/Loader'
-import styled from "styled-components";
 
 const Products = () => {
   let { pets, dogs, breeds, name, breed, search_pets, value } = useContext(
     DogContext
   );
+
+  const props = useSpring({config: {duration: 2000}, opacity: 1, from: {opacity: 0}})
+
   const recentPets = [...pets].slice(0, 5)
 
   // let animals = pets
   pets = search_pets.length > 0 ? search_pets : pets;
   if(pets.length === 0) return (<div style={{padding: "10%", textAlign: "center"}}><Loader /></div>)
   return (
-    <>
+    <animated.div style={props}>
       {name || breed ? (
         <>
           <div style={line}>
@@ -151,7 +155,7 @@ const Products = () => {
           </div>
         </>
       )}
-    </>
+    </animated.div>
   );
 };
 

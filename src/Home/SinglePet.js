@@ -8,6 +8,7 @@ import Products from "./Products";
 import FilteredComponent from "./SingleComponents/FilteredComponent";
 import '../App.css'
 import Loader from "../UiComponets/Loader";
+import { animated, useSpring } from "react-spring";
 
 const array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -21,6 +22,9 @@ const SinglePet = () => {
     handlePets,
   } = useContext(DogContext);
   const [quan, setQuan] = useState("")
+
+  const props = useSpring({config: {duration: 2000}, opacity: 1, from: {opacity: 0}})
+
   const handleSelect = ({ target: { value } }) => {
     setQuan(value)
   }
@@ -42,7 +46,7 @@ const SinglePet = () => {
   if(view_pet.length === 0) return (<div style={{padding: "10%", textAlign: "center"}}><Loader /></div>)
 
   return (
-    <>
+    <animated.div style={props}>
       <SingleParent>
         <div className='first'>
           <div className='first-sub-child'>
@@ -122,7 +126,7 @@ const SinglePet = () => {
         </div>
       </SingleParent>
       {!dogs ? <FilteredComponent dogs={dogs} /> : <Products />}
-    </>
+    </animated.div>
   );
 };
 

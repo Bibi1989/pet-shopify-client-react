@@ -7,10 +7,9 @@ import {Select} from '../StyleComponent'
 const array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const CartComponent = () => {
-  const { getCart, deleteCart, loading } = useContext(DogContext);
+  const { getCart, deleteCart, loading, arrayOfOrders } = useContext(DogContext);
   let carts = JSON.parse(localStorage.getItem("orders"))
   const [state, setState] = useState(false)
-  const [bool, setBool] = useState(false)
 
   const props = useSpring({config: {duration: 1000}, opacity: 1, from: {opacity: 0}})
 
@@ -20,11 +19,10 @@ const CartComponent = () => {
   }, [state, loading]);
 
   const handleRemove = id => {
-    setBool(true)
     deleteCart(id);
     const index = carts.findIndex(cart => cart.id === id)
     carts.splice(index, 1)
-    // carts = carts.filter(cart => cart.id !== id)
+    arrayOfOrders.splice(index, 1)
     localStorage.setItem("orders", JSON.stringify(carts))
   };
 

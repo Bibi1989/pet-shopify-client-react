@@ -13,7 +13,7 @@ const DogCategory = () => {
     const {name} = useParams()
     const history = useHistory()
 
-    const props = useSpring({config: {duration: 1000}, opacity: 1, from: {opacity: 0}})
+    const props = useSpring({config: {duration: 2000}, opacity: 1, from: {opacity: 0}})
 
     React.useEffect(() => {
         getCart()

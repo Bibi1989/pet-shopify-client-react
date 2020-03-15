@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect } from "react";
 import {
   Input,
   Menu,
@@ -21,11 +21,6 @@ export const NavBar = () => {
   const history = useHistory();
   const [toggle, setToggle] = React.useState(false)
   const [state, setstate] = React.useState(false)
-
-  // const bar1 = useRef()
-  // const bar2 = useRef()
-  // const bar3 = useRef()
-
   
   useEffect(() => {
     getCart();

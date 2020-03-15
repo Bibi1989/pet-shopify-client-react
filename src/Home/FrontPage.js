@@ -15,17 +15,20 @@ import {
   monkeytype
 } from "../arrayOfPets";
 import { DogContext } from "../context/dog-context/DogProvider";
+import { animated, useSpring } from "react-spring";
 
 const FrontPage = () => {
   const { handlePets, handleBreed } = useContext(DogContext);
   const users = JSON.parse(localStorage.getItem("users"));
+
+  const props = useSpring({config: {duration: 2000}, opacity: 1, from: {opacity: 0}})
 
   const settings = {
     autoplay: true,
     autoplaySpeed: 3000
   };
   return (
-    <div className="page">
+    <animated.div style={props}>
       <h3 style={{paddingLeft: '10%', color: 'teal', paddingBottom: '1rem',  paddingTop: '1rem'}}>{users ? `Welcome ${users.name}` : null}</h3>
       <Parent>
         <div className='child-one'>
@@ -157,7 +160,7 @@ const FrontPage = () => {
         {/* </div> */}
       </Parent>
       <Products />
-    </div>
+    </animated.div>
   );
 };
 

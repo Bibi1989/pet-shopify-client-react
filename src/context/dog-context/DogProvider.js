@@ -1,5 +1,6 @@
 import React, { createContext, useReducer, useEffect, useState } from "react";
 import axios from "axios";
+import Loader from '../../UiComponets/Loader'
 import reducer from "./reducer";
 import decode from "jwt-decode";
 import {
@@ -69,6 +70,7 @@ export const DogProvider = ({ children }) => {
   const fetchSinglePet = async id => {
     try {
       const response = await axios.get(`https://pet-shopify.herokuapp.com/animals/${id}`);
+      if(!response) return (<div style={{padding: "10%", textAlign: "center"}}><Loader /></div>)
       dispatch({ type: SINGLE_PET, payload: response.data.data });
     } catch (error) {
       dispatch({ type: ERRORS, payload: error.message });
@@ -195,7 +197,8 @@ export const DogProvider = ({ children }) => {
         loading, 
         loader,
         value: state.value,
-        anim: state.anim
+        anim: state.anim,
+        arrayOfOrders
       }}
     >
       {children}
