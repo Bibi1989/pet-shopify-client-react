@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import {useParams, useHistory} from 'react-router-dom'
-import {useSpring, animated} from 'react-spring'
+import {useHistory} from 'react-router-dom'
 import Loader from '../../UiComponets/Loader'
 import { PetCardUi } from '../../UiComponets/UiComponents'
 import { DogContext } from '../../context/dog-context/DogProvider'
@@ -10,10 +9,7 @@ const DogCategory = () => {
     const { addToCart, getCart, pets } = useContext(DogContext);
     const { id } = JSON.parse(localStorage.getItem("users")) || [];
     const [state, setState] = React.useState(false)
-    const {name} = useParams()
     const history = useHistory()
-
-    const props = useSpring({config: {duration: 1000}, opacity: 1, from: {opacity: 0}})
 
     React.useEffect(() => {
         getCart()
@@ -36,15 +32,15 @@ const DogCategory = () => {
     if(pets.length === 0) return (<div style={{padding: "15% 10%", textAlign: "center"}}><Loader /></div>)
 
     return (
-        <animated.div style={props}>
+        <>
             <div style={header}>
                 <i className="fas fa-arrow-left" style={back} onClick={handleBack}></i>
-                <h1>All {name}</h1>
+                <h1>All Recents</h1>
             </div>
             <Grid>
-                {pets.map(pet => pet.name === `${name}` && <PetCardUi key={pet._id} pet={pet} handleCart={handleCart} />)}
+                {pets.map(pet => <PetCardUi key={pet._id} pet={pet} handleCart={handleCart} />)}
             </Grid>
-        </animated.div>
+        </>
     )
 }
 
@@ -54,6 +50,7 @@ const Grid = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 20px;
+    justify-content: center;
     padding: 3% 10%;
 `
 

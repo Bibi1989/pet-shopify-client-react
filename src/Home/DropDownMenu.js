@@ -11,14 +11,16 @@ import {CSSTransition} from 'react-transition-group'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-const DropDownMenu = ({ token, carts, user, handleLogout, handleSearch, state }) => {
+const DropDownMenu = ({ token, carts, user, handleLogout, handleSearch, state, setstate }) => {
+    console.log(state)
     return (
         <Div>
             <CSSTransition
-                in={true}
+                in={state}
                 appear={true}
-                timeout={1000}
-                classNames="fade"
+                enter={state}
+                timeout={600}
+                classNames="drop"
             >
             <Menu.Menu position='right' className="show-nav">
                 <Menu.Item>
@@ -110,20 +112,8 @@ const DropDownMenu = ({ token, carts, user, handleLogout, handleSearch, state })
 }
 
 const Div = styled.div`
-    .fade-appear{
-        opacity: 0;
-    }
-    .fade-appear.fade-appear-active{
-        opacity: 1;
-        transition: opacity 600ms linear;
-    }
-    .fade-enter{
-        opacity: 0;
-    }
-    .fade-enter.fade-enter-active{
-        opacity: 1;
-        transition: opacity 600ms linear;
-    }
+    
+    
 `
 
 export default DropDownMenu

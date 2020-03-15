@@ -143,7 +143,7 @@ export const NavBar = () => {
           {/* </CSSTransition> */}
         </Menu.Menu>
       </Menu>
-      {toggle && <DropDownMenu token={token} user={user} handleSearch={handleSearch} handleLogout={handleLogout} carts={carts} state={state} />}
+      {toggle && <DropDownMenu token={token} user={user} handleSearch={handleSearch} handleLogout={handleLogout} carts={carts} state={state} setstate={setstate} />}
     </div>
   );
 };

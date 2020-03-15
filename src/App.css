@@ -12,6 +12,35 @@
   opacity: 1;
 }
 
+.drop-appear{
+  opacity: 0;
+}
+.drop-appear.drop-appear-active{
+  opacity: 1;
+  transition: opacity 600ms linear;
+}
+
+.drop-enter{
+  opacity: 0;
+}
+.drop-enter.drop-enter-active{
+  opacity: 1;
+  transition: opacity 600ms linear;
+}
+
+.cart-transition{
+  padding-top: 100vh;
+
+}
+
+.cart-transition-appear{
+  opacity: 0;
+}
+.cart-transition-appear.cart-transition-appear-active{
+  opacity: 1;
+  transition: opacity 600ms linear;
+}
+
 
 @media(max-width: 1100px) {
   .navbar{

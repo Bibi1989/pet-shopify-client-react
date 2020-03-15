@@ -21,8 +21,8 @@ const FrontPage = () => {
   const users = JSON.parse(localStorage.getItem("users"));
 
   const settings = {
-    autoplay: true
-    // autoplaySpeed: 3000
+    autoplay: true,
+    autoplaySpeed: 3000
   };
   return (
     <div className="page">

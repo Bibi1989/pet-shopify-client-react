@@ -14,6 +14,7 @@ import Login from "./Users/Login";
 import Footer from "./Home/Footer";
 import Loader from "./UiComponets/Loader";
 import PetCategory from "./Home/Category/PetCategory";
+import AllRecentsPet from "./Home/Category/AllRecentsPet";
 
 const FrontPage = lazy(() => import("./Home/FrontPage"))
 
@@ -44,6 +45,7 @@ function App() {
                       </Route>
                       <Route exact path='/view/:id' component={SinglePet} />
                       <Route exact path='/cart' component={CartComponent} />
+                      <Route exact path='/category' component={AllRecentsPet} />
                       <Route exact path='/category/:name' component={PetCategory} />
                       <Route exact path='/seller' component={AddPet} />
                     </UserProvider>

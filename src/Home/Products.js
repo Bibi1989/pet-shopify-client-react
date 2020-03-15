@@ -83,6 +83,7 @@ const Products = () => {
                 );
               })}
             </Container>
+            <CustomLink><Link className="links" to={`/category`}><span>All Recents Pet</span></Link></CustomLink>
           </div>}
           
           <div>
