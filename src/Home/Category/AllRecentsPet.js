@@ -35,6 +35,7 @@ const DogCategory = () => {
     if(pets.length === 0) return (<div style={{padding: "15% 10%", textAlign: "center"}}><Loader /></div>)
 
     return (
+
         <animated.div style={props}>
             <div style={header}>
                 <i className="fas fa-arrow-left" style={back} onClick={handleBack}></i>
@@ -54,7 +55,20 @@ const Grid = styled.div`
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 20px;
     justify-content: center;
+    align-items: center;
     padding: 3% 10%;
+
+    @media(max-width: 1200px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media(max-width: 850px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media(max-width: 650px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
 `
 
 const header = {

@@ -21,9 +21,9 @@ const CartComponent = () => {
   const handleRemove = id => {
     deleteCart(id);
     const index = carts.findIndex(cart => cart.id === id)
-    carts.splice(index, 1)
+    // carts.splice(index, 1)
     arrayOfOrders.splice(index, 1)
-    localStorage.setItem("orders", JSON.stringify(carts))
+    localStorage.setItem("orders", JSON.stringify(arrayOfOrders))
   };
 
   const handleQuantity = (e, id) => {

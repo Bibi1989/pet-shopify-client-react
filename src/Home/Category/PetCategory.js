@@ -55,6 +55,18 @@ const Grid = styled.div`
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 20px;
     padding: 3% 10%;
+
+    @media(max-width: 1200px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media(max-width: 850px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media(max-width: 650px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
 `
 
 const header = {
