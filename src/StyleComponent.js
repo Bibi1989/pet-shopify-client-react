@@ -64,7 +64,9 @@ export const Price = styled.div`
 
 export const Container = styled.div`
   margin: 2% 10%;
-  padding: 1% 0;
+  padding: 10px;
+  background: #fff;
+  box-shadow: 0px 2px 15px #eee;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-gap: 4%;
@@ -77,7 +79,9 @@ export const Container = styled.div`
 
 export const FilteredContainer = styled.div`
   margin: 2% 10%;
-  padding: 2% 0;
+  padding: 10px;
+  background: #fff;
+  box-shadow: 0px 2px 15px #eee;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 4%;
