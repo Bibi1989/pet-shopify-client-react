@@ -46,46 +46,48 @@ const CartComponent = () => {
         <h1>Your Cart</h1>
         {carts !== null &&
           carts.map(a => (
-            <Item.Group key={a.id} divided style={{borderBottom: '1px solid #999'}}>
-              <Item>
-                <Item.Image src={a.image_url} width='200px' />
+            <animated.div style={props}>
+              <Item.Group key={a.id} divided style={{borderBottom: '1px solid #999'}}>
+                <Item>
+                  <Item.Image src={a.image_url} width='200px' />
 
-                <Item.Content>
-                  <Item.Header as='a'>{a.name}</Item.Header>
-                  <Item.Meta>
-                    <span className='cinema'>{a.description}</span>
-                  </Item.Meta>
-                  <Item.Description>{a.location}</Item.Description>
-                  <Item.Extra>
-                    <Label>
-                      <span>Quantity</span>{" "}
-          <span style={{ color: "teal" }}>{a.quantity}</span>
-                    </Label>
-                    <Label>
-                      <span>&#8358;</span> {(a.price).toLocaleString("en-US", {style: "currency", currency: "USD", minimumFractionDigits: 2})}
-                    </Label>
-                    <Label>
-                      <span>&#8358;</span> {(parseInt(a.price) * parseInt(a.quantity)).toLocaleString("en-GB")}
-                    </Label>
+                  <Item.Content>
+                    <Item.Header as='a'>{a.name}</Item.Header>
+                    <Item.Meta>
+                      <span className='cinema'>{a.description}</span>
+                    </Item.Meta>
+                    <Item.Description>{a.location}</Item.Description>
+                    <Item.Extra>
+                      <Label>
+                        <span>Quantity</span>{" "}
+            <span style={{ color: "teal" }}>{a.quantity}</span>
+                      </Label>
+                      <Label>
+                        <span>&#8358;</span> {(a.price).toLocaleString("en-US", {style: "currency", currency: "USD", minimumFractionDigits: 2})}
+                      </Label>
+                      <Label>
+                        <span>&#8358;</span> {(parseInt(a.price) * parseInt(a.quantity)).toLocaleString("en-GB")}
+                      </Label>
 
-                    <Button
-                      onClick={() => handleRemove(a.id)}
-                      color='red'
-                      floated='right'
-                      >
-                      Remove Item
-                    </Button>
-                  <Item.Description>
-                    <Select onChange={(e) => handleQuantity(e, a.id)}>
-                      {array.map(opt => (
-                        <option key={opt} value={opt}>{opt}</option>
-                      ))}
-                    </Select>
-                  </Item.Description>
-                  </Item.Extra>
-                </Item.Content>
-              </Item>
-            </Item.Group>
+                      <Button
+                        onClick={() => handleRemove(a.id)}
+                        color='red'
+                        floated='right'
+                        >
+                        Remove Item
+                      </Button>
+                    <Item.Description>
+                      <Select onChange={(e) => handleQuantity(e, a.id)}>
+                        {array.map(opt => (
+                          <option key={opt} value={opt}>{opt}</option>
+                        ))}
+                      </Select>
+                    </Item.Description>
+                    </Item.Extra>
+                  </Item.Content>
+                </Item>
+              </Item.Group>
+            </animated.div>
           ))}
           <div style={{padding: '30px 0', display: 'flex', flexDirection: 'column', alignItems: 'flex-end'}}>
             <h3 style={{color: '#555'}}>Cart Total Price</h3>

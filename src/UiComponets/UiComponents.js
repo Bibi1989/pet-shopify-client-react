@@ -34,7 +34,7 @@ export const ButtonComponent = () => (
 );
 
 export const PetCardUi = ({ pet, handleCart }) => (
-  <Card style={{ width: "250px", margin: 'auto' }}>
+  <Card style={{ margin: 'auto' }}>
     <Image style={{ width: "100%", height: "150px", position: "relative" }}>
       <img src={pet.image_url} alt='cat2' width='100%' height='100%' />
       <div className='overlay'>
