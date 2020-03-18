@@ -131,7 +131,7 @@ const FrontPage = () => {
             <h1>Shop For Your Favorite Pet</h1>
             <div className='shop'>
               <Button>
-                <span>Shop Now</span>
+                <span onClick={() => window.alert("Yes nigga")}>Shop Now</span>
               </Button>
             </div>
           </div>

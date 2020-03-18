@@ -15,7 +15,7 @@ import DropDownMenu from "./DropDownMenu";
 import BurgerMenu from "./BurgerMenu";
 
 export const NavBar = () => {
-  const { getCart, onSearch } = useContext(DogContext);
+  const { getCart, onSearch, handlePets, handleBreed } = useContext(DogContext);
   const token = localStorage.getItem("x-auth");
   const carts = JSON.parse(localStorage.getItem("orders"));
   const history = useHistory();
@@ -54,6 +54,11 @@ export const NavBar = () => {
               color='teal'
               as='h1'
               style={{ color: "teal", fontSize: "1.3rem" }}
+              onClick={() => {
+                onSearch("")
+                handlePets("");
+                handleBreed("");
+              }}
             />
           </Link>
           <BurgerMenu handleToggle={handleToggle} />
@@ -145,9 +150,8 @@ export const NavBar = () => {
 
 const sticky = {
   padding: "0.5% 10%",
-  background: "#f1f1f1",
+  background: "#fff",
   position: "-webkit-sticky",
-  // eslint-disable-next-line
   position: "sticky",
   top: "0",
   zIndex: "10"
